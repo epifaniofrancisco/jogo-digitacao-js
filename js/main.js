@@ -1,11 +1,10 @@
 window.addEventListener("load", init);
 
-
 // TODO: Mudar os níveis de jogo após o score aumentar.
 const niveis = {
-    facil: 5,
-    medio: 3,
-    dificil: 2
+	facil: 5,
+	medio: 3,
+	dificil: 2,
 };
 
 const nivelActual = niveis.facil;
@@ -41,10 +40,8 @@ const palavras = [
 	"autor",
 ];
 
-// Iniciar o jogo
 function init() {
-    segundos.innerHTML = nivelActual;
-	// carregar a palavra do array
+	segundos.innerHTML = nivelActual;
 	showWord(palavras);
 	entradaPalavra.addEventListener("input", acertar);
 	setInterval(contador, 1000);
