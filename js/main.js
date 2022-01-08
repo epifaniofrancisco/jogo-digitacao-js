@@ -1,14 +1,13 @@
 window.addEventListener("load", init);
 
-// TODO: Mudar os níveis de jogo após o score aumentar.
-const niveis = {
-	facil: 5,
-	medio: 3,
-	dificil: 2,
+const levels = {
+	easy: 10,
+	medium: 7,
+	hard: 4,
 };
 
-const nivelActual = niveis.facil;
-var tempo = nivelActual;
+const nActual = levels.easy;
+var tempo = nActual;
 var score = 0;
 let estaJogar;
 
@@ -19,30 +18,87 @@ const mostrarTempo = document.getElementById("tempo");
 const mensagem = document.getElementById("mensagem");
 const segundos = document.getElementById("segundos");
 
-const palavras = [
-	"hacker",
+const palavrasF = [
 	"desenvolvedor",
-	"computador",
-	"rio",
-	"gerador",
 	"cocktail",
-	"piada",
-	"herói",
-	"javascript",
-	"desenvolvimento",
-	"python",
 	"investigar",
 	"assassino",
-	"placa",
-	"setup",
+	"javascript",
+	"desenvolvimento",
+	"atirar",
+	"vocês",
+	"novamente",
+	"advogado",
+	"claramente",
+	"cultural",
+	"responsabilidade",
+	"mais tarde",
+	"óleo",
+	"desenvolve",
+	"importante",
+	"internacional",
+	"principal",
+	"permanecer",
+];
+const palavrasM = [
 	"youtube",
 	"mensagem",
 	"autor",
+	"coleção",
+	"mil",
+	"pensamento",
+	"dinheiro",
+	"questão",
+	"colocar",
+	"estrada",
+	"tornar-se",
+	"problema",
+	"porta",
+	"hospital",
+	"público",
+	"viagem",
+	"sentar",
+	"professor",
+	"médico",
+	"capital",
+];
+const palavrasD = [
+	"hacker",
+	"computador",
+	"rio",
+	"gerador",
+	"piada",
+	"herói",
+	"python",
+	"placa",
+	"setup",
+	"quente",
+	"apesar",
+	"provar",
+	"vento",
+	"também",
+	"perder",
+	"unidade",
+	"caixa",
+	"questão",
+	"entre",
+	"preço",
+	"estado",
+	"não",
+	"escolha",
+	"evita",
+	"conjunto",
+	"eles",
+	"ano",
+	"menina",
+	"tentativas",
 ];
 
+var palavra = palavrasF;
+
 function init() {
-	segundos.innerHTML = nivelActual;
-	showWord(palavras);
+	segundos.innerHTML = nActual;
+	showWord(palavra);
 	entradaPalavra.addEventListener("input", acertar);
 	setInterval(contador, 1000);
 	setInterval(verificarJogo, 50);
@@ -58,10 +114,18 @@ function showWord(palavras) {
 function acertar() {
 	if (matchWords()) {
 		estaJogar = true;
-		tempo = nivelActual + 1;
-		showWord(palavras);
+		tempo = nActual + 1;
+		showWord(palavra);
 		entradaPalavra.value = "";
 		score++;
+
+		if (score > 6) {
+			tempo = levels.medium;
+			palavra = palavrasM;
+		} if (score > 11) {
+			tempo = levels.hard;
+			palavra = palavrasD;
+		}
 	}
 	if (score === -1) {
 		mostrarScore.innerHTML = 0;
