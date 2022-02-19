@@ -10,6 +10,9 @@
 <p align="justify">Este projecto é um jogo da digitação na web feito com Javascrit para verificar o quão rápido você é a digitar.</p>
 
 ### Demo
+
+<a href="https://epifaniofrancisco.github.io/jogo-digitacao-js/">Demo</a>
+
 ![Captura de ecrã 2022-01-08 212433](https://user-images.githubusercontent.com/81193129/148659213-6123f7a3-6456-411b-8643-4ce4670ed9b9.jpg)
 
 ## Configuração
